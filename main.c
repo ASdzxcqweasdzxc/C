@@ -1,18 +1,31 @@
 #include <stdio.h>
+#include "math.h"
+
 void types_length();
 void symbols_pos();
+void root(int x);
 
 int main() {
 
     //task 1, exercise 1
     //prints length of: short, int, long, float, double, long double
-    printf("Task 1\n");
+    printf("Task 1.1\n");
     types_length();
     printf("\n");
 
     //task 1, exercise 4
-    printf("Task 2\n");
+    printf("Task 1.2\n");
     symbols_pos();
+    printf("\n");
+
+    //task 2.1
+    int x = 0;
+    while (x != -1) {
+        printf("Enter the number: \n");
+        scanf("%d", &x);
+        root(x);
+    }
+
 
     return 0;
 }
@@ -66,4 +79,22 @@ void types_length() {
 
     i = sizeof(long double);
     printf("Size of long double: %d\n", i);
+}
+
+void root(int x){
+    double xi, root, eps;
+    eps = 0.0000001;
+
+    root = x;
+    xi = 1;
+
+    while(root - xi >= eps || xi - root >= eps){
+        xi = root;
+        root = (xi + x/xi) / 2;
+    }
+
+    printf("The square root of '%d' is '%.10g'\n", x, root);
+    //check with math
+    printf("Math check: %.10g\n\n", sqrt(x));
+
 }
