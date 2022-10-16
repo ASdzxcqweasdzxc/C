@@ -3,7 +3,7 @@
 
 void types_length();
 void symbols_pos();
-void root(int x);
+void root(double eps, int x);
 
 int main() {
 
@@ -20,12 +20,14 @@ int main() {
 
     //task 2.1
     int x = 0;
+    double eps;
+    printf("Enter epsilon: \n");
+    scanf("%lf", &eps);
     while (x != -1) {
         printf("Enter the number: \n");
         scanf("%d", &x);
-        root(x);
+        root(eps, x);
     }
-
 
     return 0;
 }
@@ -81,8 +83,8 @@ void types_length() {
     printf("Size of long double: %d\n", i);
 }
 
-void root(int x){
-    double xi, root, eps;
+void root(double eps, int x){
+    double xi, root;
     eps = 0.0000001;
 
     root = x;
