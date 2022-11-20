@@ -22,16 +22,32 @@ int main() {
 //
     //task 2.1
 //    int x = 0;
-    double eps, x;
-    printf("Enter epsilon: \n");
-    scanf("%lf", &eps);
-        printf("Enter the number: \n");
-        scanf("%lf", &x);
-        root(eps, x);
+//    double eps, x;
+//    printf("Enter epsilon: \n");
+//    scanf("%lf", &eps);
+//        printf("Enter the number: \n");
+//        scanf("%lf", &x);
+//        root(eps, x);
 
     //task 2.2.1
 //    gornerOne();
-
+    double x, x_n = 1, a, p_x = 0;
+    int n = 0, c;
+    printf("Enter value x:\n");
+    scanf("%lf", &x);
+    while (1) {
+//        while ((c = getchar()) != 'a' && c != EOF){
+        printf("Enter value a%d:\n", n);
+        c = scanf("%lf", &a);
+        if (c == EOF){
+            printf("P(%.3lf)=%.3lf\n", x, p_x);
+            break;}
+        printf("x_%d=%.3lf\n", n++, x_n);
+        p_x += a * x_n;
+        printf("px=%.3lf\n", p_x);
+        x_n *= x;
+    }
+    printf("P(%.3lf)=%.3lf\n", x, p_x);
     return 0;
 }
 
