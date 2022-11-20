@@ -3,7 +3,7 @@
 
 void types_length();
 void symbols_pos();
-void root(double eps, int x);
+void root(double eps, double x);
 float power(float x, int i);
 void gornerOne();
 
@@ -20,19 +20,17 @@ int main() {
 //    symbols_pos();
 //    printf("\n");
 //
-//    //task 2.1
+    //task 2.1
 //    int x = 0;
-//    double eps;
-//    printf("Enter epsilon: \n");
-//    scanf("%lf", &eps);
-//    while (x != -1) {
-//        printf("Enter the number: \n");
-//        scanf("%d", &x);
-//        root(eps, x);
-//    }
+    double eps, x;
+    printf("Enter epsilon: \n");
+    scanf("%lf", &eps);
+        printf("Enter the number: \n");
+        scanf("%lf", &x);
+        root(eps, x);
 
     //task 2.2.1
-    gornerOne();
+//    gornerOne();
 
     return 0;
 }
@@ -123,20 +121,21 @@ void types_length() {
 }
 
 // task 2.1
-void root(double eps, int x){
+void root(double _eps, double _x){
     double xi, root;
-    eps = 0.0000001;
+//    eps = 0.0000001;
 
-    root = x;
+    root = _x;
     xi = 1;
 
-    while(root - xi >= eps || xi - root >= eps){
+    while(root - xi >= _eps || xi - root >= _eps){
+//    while(xi >= _eps){
         xi = root;
-        root = (xi + x/xi) / 2;
+        root = (xi + _x/xi) / 2;
     }
 
-    printf("The square root of '%d' is '%.10g'\n", x, root);
+    printf("The square root of '%.10g' is '%.10g'\n", _x, root);
     //check with math
-    printf("Math check: %.10g\n\n", sqrt(x));
+    printf("Math check: %.10g\n\n", sqrt(_x));
 
 }
