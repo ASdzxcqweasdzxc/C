@@ -36,15 +36,13 @@ int main() {
     printf("Enter value x:\n");
     scanf("%lf", &x);
     while (1) {
-//        while ((c = getchar()) != 'a' && c != EOF){
-        printf("Enter value a%d:\n", n);
+        printf("Enter value a%d:\n", n++);
         c = scanf("%lf", &a);
-        if (c == EOF){
-            printf("P(%.3lf)=%.3lf\n", x, p_x);
-            break;}
-        printf("x_%d=%.3lf\n", n++, x_n);
+        if (c == EOF)
+            break;
+//        printf("x_%d=%.3lf\n", n++, x_n);
         p_x += a * x_n;
-        printf("px=%.3lf\n", p_x);
+//        printf("px=%.3lf\n", p_x);
         x_n *= x;
     }
     printf("P(%.3lf)=%.3lf\n", x, p_x);
