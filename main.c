@@ -29,8 +29,35 @@ int main() {
 //        scanf("%lf", &x);
 //        root(eps, x);
 
-    //task 2.2.1
+    //task 2.2.2
 //    gornerOne();
+
+/* x
+ * x_n
+ */
+    double x, x_n = 1, a, p_x = 0, p_dev = 0;
+    int n = 0, c;
+    printf("Enter value x:\n");
+    scanf("%lf", &x);
+    while (1) {
+        printf("Enter value a%d:\n", n++);
+        c = scanf("%lf", &a);
+        if (c == EOF)
+            break;
+//        printf("x_%d=%.3lf\n", n++, x_n);
+        p_x += a * x_n;
+        p_dev += (a * (x_n / x)) * (n - 1);
+//        printf("px=%.3lf\n", p_dev);
+        x_n *= x;
+    }
+    printf("P(%.3lf)=%.3lf\n", x, p_x);
+    printf("P_dev=%.3lf\n", p_dev);
+    return 0;
+}
+
+
+//task 2.2.1
+void gornerOne(){
     double x, x_n = 1, a, p_x = 0;
     int n = 0, c;
     printf("Enter value x:\n");
@@ -46,29 +73,7 @@ int main() {
         x_n *= x;
     }
     printf("P(%.3lf)=%.3lf\n", x, p_x);
-    return 0;
-}
-
-
-//task 2.2.1
-void gornerOne(){
-    int n;  //number of numbers
-    float x;  //const
-    float a;  //a(i) coefficient
-    float p = 0;  //func P(x)
-
-    printf("enter x: ");  //enter once
-    scanf("%f", &x);  //enter once
-    printf("enter n: ");  //enter once
-    scanf("%d", &n);  //enter once
-
-    for (int j = 0; j < n; ++j) {
-        printf("enter a%d: ", j);
-        scanf("%f", &a);  //n times
-
-        p = p + a * power(x,j);
-    }
-    printf("P(x): %f\n", p);
+//    return 0;
 }
 
 //support power func
