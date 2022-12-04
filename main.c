@@ -7,51 +7,57 @@ void root(double eps, double x);
 float power(float x, int i);
 void gornerOne();
 
+// recursive func
+int fibonacci(int f) {
+    if(f == 0){
+        return 0;
+    } else if(f == 1) {
+        return 1;
+    } else {
+    return (fibonacci(f-1) + fibonacci(f-2));
+    }
+}
+
 int main() {
 
-//    //task 1.1
-//    //prints length of: short, int, long, float, double, long double
-//    printf("Task 1.1\n");
-//    types_length();
-//    printf("\n");
-//
-//    //task 1.4
-//    printf("Task 1.2\n");
-//    symbols_pos();
-//    printf("\n");
-//
-    //task 2.1
-//    int x = 0;
-//    double eps, x;
-//    printf("Enter epsilon: \n");
-//    scanf("%lf", &eps);
-//        printf("Enter the number: \n");
-//        scanf("%lf", &x);
-//        root(eps, x);
-
-    //task 2.2.2
-//    gornerOne();
-
-/* x
- * x_n
- */
-    double x, x_n = 1, a, p_x = 0, p_dev = 0;
-    int n = 0, c;
-    printf("Enter value x:\n");
-    scanf("%lf", &x);
-    while (1) {
-        printf("Enter value a%d:\n", n++);
-        c = scanf("%lf", &a);
-        if (c == EOF)
-            break;
-//        printf("x_%d=%.3lf\n", n++, x_n);
-        p_x += a * x_n;
-        p_dev += (a * (x_n / x)) * (n - 1);
-//        printf("px=%.3lf\n", p_dev);
-        x_n *= x;
+    //task 2.3
+    //prints fibonacci sequence
+    // iterative func
+    int i, f_prev=0, f_cur=1, tmp;
+    printf("Enter value i: ");
+    scanf("%d", &i);
+    if (i==0 || i==1) return i;
+    for (int j=1; j<i; j++){
+        tmp = f_cur;
+        f_cur =  f_prev + f_cur;
+        f_prev = tmp;
     }
-    printf("P(%.3lf)=%.3lf\n", x, p_x);
-    printf("P_dev=%.3lf\n", p_dev);
+    printf("Iterative value= %d\n", f_cur);
+
+    printf("Recursive value= %d\n", fibonacci(i));
+
+
+
+    // task 2.2.2
+    // gornerOne();
+
+//    double x, x_n = 1, a, p_x = 0, p_dev = 0;
+//    int n = 0, c;
+//    printf("Enter value x:\n");
+//    scanf("%lf", &x);
+//    while (1) {
+//        printf("Enter value a%d:\n", n++);
+//        c = scanf("%lf", &a);
+//        if (c == EOF)
+//            break;
+////        printf("x_%d=%.3lf\n", n++, x_n);
+//        p_x += a * x_n;
+//        p_dev += (a * (x_n / x)) * (n - 1);
+////        printf("px=%.3lf\n", p_dev);
+//        x_n *= x;
+//    }
+//    printf("P(%.3lf)=%.3lf\n", x, p_x);
+//    printf("P_dev=%.3lf\n", p_dev);
     return 0;
 }
 
