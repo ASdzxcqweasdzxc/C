@@ -18,24 +18,31 @@ int fibonacci(int f) {
     }
 }
 
-int main() {
-
-    //task 2.3
-    //prints fibonacci sequence
-    // iterative func
-    int i, f_prev=0, f_cur=1, tmp;
-    printf("Enter value i: ");
-    scanf("%d", &i);
+// iterative func
+int f_iter(int i){
+    int f_prev=0, f_cur=1, tmp;
     if (i==0 || i==1) return i;
     for (int j=1; j<i; j++){
         tmp = f_cur;
         f_cur =  f_prev + f_cur;
         f_prev = tmp;
     }
-    printf("Iterative value= %d\n", f_cur);
+    return f_cur;
+}
 
-    printf("Recursive value= %d\n", fibonacci(i));
+int main() {
 
+    //task 2.3
+    //prints fibonacci sequence
+    int i, c;
+    while(1) {
+        int f_prev=0, f_cur=1, tmp;
+        printf("Enter value i: ");
+        c = scanf("%d", &i);
+        if (c == EOF) break;
+        printf("Iterative value= %d\n", f_iter(i));
+        printf("Recursive value= %d\n", fibonacci(i));
+    }
 
 
     // task 2.2.2
