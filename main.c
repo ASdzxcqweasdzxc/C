@@ -30,7 +30,70 @@ int f_iter(int i){
     return f_cur;
 }
 
+double str2double(char str[]){
+    double res=0, ten=10.0, e_pow=1.0;
+    int sig = 1, j=0, afterdot=0, i=0, e_sign=0;
+    if  (*str == '-') {
+        sig = -1;
+        j++;
+    }
+
+    // if dot, change multiplication to division
+    while(str[j] != '\0'){
+        if (str[j] == '.'){
+            afterdot = 1;
+            j++;
+        }
+
+    // dealing with E cases
+    // if got E then calculate leftovers here
+    if (str[j] == 'E' || str[j] == 'e') {
+        j++;
+        if (str[j] == '-'){
+            e_sign = 1;
+            j++;
+        }
+        if (str[j] == '+') j++;
+        while(str[j] != '\0'){
+            i = i * 10 + (str[j] - '0');
+            j++;
+        }
+        if (e_sign == 0) {
+            for (int k = 0; k < i; ++k) {
+                e_pow *= 10;
+            }
+        } else {
+            for (int k = 0; k < i; ++k) {
+                e_pow /= 10;
+            }
+
+        }
+        return res * e_pow * sig;
+    }
+
+        if (afterdot == 0) {
+            res = res * ten + (str[j] - '0');
+        } else {
+            res = res + (str[j] - '0') / ten;
+            ten *= 10.0;
+        }
+        j++;
+    }
+
+    return res * sig;
+}
+
 int main() {
+
+    // task 2.4
+    // converts string to double
+    char n[] = "";
+    while(1) {
+        printf("Enter number sequence: ");
+        int c = scanf("%s", n);
+        if (c == EOF) break;
+        printf("%.10g\n", str2double(n));
+    }
 
     //task 2.3
     //prints fibonacci sequence
@@ -45,26 +108,25 @@ int main() {
 //    }
 
 
-    // task 2.2.2
-    // gornerOne();
-
-    double x, x_n = 1, a, p_x = 0, p_dev = 0;
-    int n = 0, c;
-    printf("Enter value x:\n");
-    scanf("%lf", &x);
-    while (1) {
-        printf("Enter value a%d:\n", n++);
-        c = scanf("%lf", &a);
-        if (c == EOF)
-            break;
-//        printf("x_%d=%.3lf\n", n++, x_n);
-        p_dev = p_dev * x + p_x;
-        p_x = p_x * x + a;
-//        printf("px=%.3lf\n", p_dev);
-//        x_n *= x;
-    }
-    printf("P(%.3lf)=%.3lf\n", x, p_x);
-    printf("P_dev=%.3lf\n", p_dev);
+//    // task 2.2.2
+//    // gornerOne();
+//    double x, x_n = 1, a, p_x = 0, p_dev = 0;
+//    int n = 0, c;
+//    printf("Enter value x:\n");
+//    scanf("%lf", &x);
+//    while (1) {
+//        printf("Enter value a%d:\n", n++);
+//        c = scanf("%lf", &a);
+//        if (c == EOF)
+//            break;
+////        printf("x_%d=%.3lf\n", n++, x_n);
+//        p_dev = p_dev * x + p_x;
+//        p_x = p_x * x + a;
+////        printf("px=%.3lf\n", p_dev);
+////        x_n *= x;
+//    }
+//    printf("P(%.3lf)=%.3lf\n", x, p_x);
+//    printf("P_dev=%.3lf\n", p_dev);
     return 0;
 }
 
