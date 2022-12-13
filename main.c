@@ -43,6 +43,7 @@ double str2double(char str[]){
         if (str[j] == '.'){
             afterdot = 1;
             j++;
+            if (str[j] == '\0') return res * sig;
         }
 
     // dealing with E cases
