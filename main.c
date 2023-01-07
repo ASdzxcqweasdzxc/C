@@ -5,96 +5,34 @@ void types_length();
 void symbols_pos();
 void root(double eps, double x);
 float power(float x, int i);
+
+/** task 2.2.1 */
 void gornerOne();
 
+/** task 2.2.2 */
+//
+void gornerTwo();
+
+/** task 2.3 */
 // recursive func
-int fibonacci(int f) {
-    if(f == 0){
-        return 0;
-    } else if(f == 1) {
-        return 1;
-    } else {
-    return (fibonacci(f-1) + fibonacci(f-2));
-    }
-}
-
+int fibonacci(int f);
 // iterative func
-int f_iter(int i){
-    int f_prev=0, f_cur=1, tmp;
-    if (i==0 || i==1) return i;
-    for (int j=1; j<i; j++){
-        tmp = f_cur;
-        f_cur =  f_prev + f_cur;
-        f_prev = tmp;
-    }
-    return f_cur;
-}
+int f_iter(int i);
 
-double str2double(char str[]){
-    double res=0, ten=10.0, e_pow=1.0;
-    int sig = 1, j=0, afterdot=0, i=0, e_sign=0;
-    if  (*str == '-') {
-        sig = -1;
-        j++;
-    }
-
-    // if dot, change multiplication to division
-    while(str[j] != '\0'){
-        if (str[j] == '.'){
-            afterdot = 1;
-            j++;
-            if (str[j] == '\0') return res * sig;
-        }
-
-    // dealing with E cases
-    // if got E then calculate leftovers here
-    if (str[j] == 'E' || str[j] == 'e') {
-        j++;
-        if (str[j] == '-'){
-            e_sign = 1;
-            j++;
-        }
-        if (str[j] == '+') j++;
-        while(str[j] != '\0'){
-            i = i * 10 + (str[j] - '0');
-            j++;
-        }
-        if (e_sign == 0) {
-            for (int k = 0; k < i; ++k) {
-                e_pow *= 10;
-            }
-        } else {
-            for (int k = 0; k < i; ++k) {
-                e_pow /= 10;
-            }
-
-        }
-        return res * e_pow * sig;
-    }
-
-        if (afterdot == 0) {
-            res = res * ten + (str[j] - '0');
-        } else {
-            res = res + (str[j] - '0') / ten;
-            ten *= 10.0;
-        }
-        j++;
-    }
-
-    return res * sig;
-}
+/** task 2.4 */
+// converts string to double
+double str2double(char n[]);
 
 int main() {
-
     // task 2.4
     // converts string to double
-    char n[] = "";
-    while(1) {
-        printf("Enter number sequence: ");
-        int c = scanf("%s", n);
-        if (c == EOF) break;
-        printf("%.10g\n", str2double(n));
-    }
+//    char n[] = "";
+//    while(1) {
+//        puts("Enter number sequence: ");
+//        int c = scanf("%s", n);
+//        if (c == EOF) break;
+//        printf("%.10g\n", str2double(n));
+//    }
 
     //task 2.3
     //prints fibonacci sequence
@@ -110,7 +48,7 @@ int main() {
 
 
 //    // task 2.2.2
-//    // gornerOne();
+     gornerTwo();
 //    double x, x_n = 1, a, p_x = 0, p_dev = 0;
 //    int n = 0, c;
 //    printf("Enter value x:\n");
